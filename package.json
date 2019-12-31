@@ -1,0 +1,28 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "all about tasty food",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "live-server": "live-server --browser=chrome --open=dist --entry-file=index.html",
+    "start": "npm-run-all --parallel live-server dev"
+  },
+  "author": "Schitiz Sharma",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "axios": "^0.19.0"
+  }
+}
