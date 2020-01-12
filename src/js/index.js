@@ -25,16 +25,30 @@ const controlSearch = async () => {
     searchView.clearResList();
     renderLoader(elements.searchRes);
 
-    // 4) Search for recipes
-    await state.search.getResults();
+    try {
+      // 4) Search for recipes
+      await state.search.getResults();
 
-    // 5) TODO Render results on UI
-    clearLoader();
-    searchView.renderResults(state.search.recipes);
+      // 5) Render results on UI
+      clearLoader();
+      searchView.renderResults(state.search.result);
+    } catch (err) {
+      alert('Something wrong with the search...');
+      clearLoader();
+    }
   }
 };
 
 elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   controlSearch();
+});
+
+elements.searchResPages.addEventListener('click', e => {
+  const btn = e.target.closest('.btn-inline');
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    searchView.clearResults();
+    searchView.renderResults(state.search.result, goToPage);
+  }
 });
