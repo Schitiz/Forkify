@@ -14,7 +14,7 @@ const state = {};
 const controlSearch = async () => {
   // 1) Get Qeury from searchView
   const query = searchView.getInput();
-  //   console.log(query);
+  console.log(query);
 
   if (query) {
     // 2) New Search object and add to state
@@ -25,17 +25,12 @@ const controlSearch = async () => {
     searchView.clearResList();
     renderLoader(elements.searchRes);
 
-    try {
-      // 4) Search for recipes
-      await state.search.getResults();
+    // 4) Search for recipes
+    await state.search.getResults();
 
-      // 5) Render results on UI
-      clearLoader();
-      searchView.renderResults(state.search.result);
-    } catch (err) {
-      alert('Something wrong with the search...');
-      clearLoader();
-    }
+    // 5) Render results on UI
+    clearLoader();
+    searchView.renderResults(state.search.result);
   }
 };
 
